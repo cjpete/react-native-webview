@@ -5,6 +5,7 @@ import {
   requireNativeComponent,
   UIManager as NotTypedUIManager,
   View,
+  StyleSheet,
   NativeModules,
   ImageSourcePropType,
   findNodeHandle,
@@ -240,6 +241,12 @@ class WebView extends React.Component<AndroidWebViewProps, State> {
     } else if (this.state.viewState !== 'IDLE') {
       console.error(
         `RNCWebView invalid state encountered: ${this.state.viewState}`,
+      );
+    }
+
+    if (otherView) {
+      otherView = (
+        <View style={StyleSheet.absoluteFillObject}>{otherView}</View>
       );
     }
 
